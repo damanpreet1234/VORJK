@@ -1078,7 +1078,7 @@ IIIM: Solar Mech Engine </a>
  <div class="elementor-widget-wrap elementor-element-populated">
  <div class="elementor-element elementor-element-4a912e63 envato-kit-66-subscription-form elementor-button-align-stretch elementor-widget elementor-widget-form" data-id=4a912e63 data-element_type=widget data-settings='{"button_width":"25","step_next_label":"Next","step_previous_label":"Previous","step_type":"number_text","step_icon_shape":"circle"}' data-widget_type=form.default>
  <div class=elementor-widget-container>
- <form class=elementor-form method=post name="New Form">
+<form class="elementor-form" action="#" onsubmit="return false;" name="New Form">
 
  <div class="elementor-form-fields-wrapper elementor-labels-">
  <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-75 elementor-field-required">
@@ -1115,6 +1115,27 @@ IIIM: Solar Mech Engine </a>
 
 
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.elementor-form');
+    const button = form?.querySelector('button[type="submit"]');
+
+    if (form && button) {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Fully block form from submitting
+        form.innerHTML = '<h3>Submitted</h3>';
+      });
+
+      // Just in case Elementor intercepts submit via JS, also handle click directly
+      button.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent any default behavior
+        form.dispatchEvent(new Event('submit', { cancelable: true }));
+      });
+    }
+  });
+</script>
+
 
  <section class="elementor-section elementor-top-section elementor-element elementor-element-2a93f334 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id=2a93f334 data-element_type=section data-settings='{"background_background":"classic"}'>
  <div class="elementor-container elementor-column-gap-default">

@@ -793,6 +793,26 @@ body{
 		</div>
 					</div>
 		</section>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+			  const form = document.querySelector('.elementor-form');
+			  const button = form?.querySelector('button[type="submit"]');
+		  
+			  if (form && button) {
+				form.addEventListener('submit', function (event) {
+				  event.preventDefault(); // Fully block form from submitting
+				  form.innerHTML = '<h3>Submitted</h3>';
+				});
+		  
+				// Just in case Elementor intercepts submit via JS, also handle click directly
+				button.addEventListener('click', function (event) {
+				  event.preventDefault(); // Prevent any default behavior
+				  form.dispatchEvent(new Event('submit', { cancelable: true }));
+				});
+			  }
+			});
+		  </script>
 				<section class="elementor-section elementor-top-section elementor-element elementor-element-2a93f334 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="2a93f334" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 						<div class="elementor-container elementor-column-gap-default">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-78a83fdf" data-id="78a83fdf" data-element_type="column">
